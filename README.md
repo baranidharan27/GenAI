@@ -1,85 +1,171 @@
-# Content Generator
+# GenAI Content Generator
 
-A LLM -driven content generator built using GPT-2(Transformer lib). This project uses Streamlit for the user interface and integrates a REST API for backend functionality. Additionally, Docker is used for containerization to ensure the application can run seamlessly across different environments.
+A LLM-driven content generator leveraging GPT-2 (Transformer library) with a Streamlit user interface and REST API backend. The project uses Docker for containerization, ensuring consistent deployment across environments.
 
-## Why REST API?
+## Table of Contents
+- [Architecture Overview](#architecture-overview)
+- [Key Features](#key-features)
+- [Project Setup](#project-setup)
+- [Development Guide](#development-guide)
+- [Prompt Engineering](#prompt-engineering)
+- [Documentation](#documentation)
+- [Future Roadmap](#future-roadmap)
 
-The REST API is implemented to expose the model’s functionality in a way that is accessible and scalable. With the API in place, users can interact with the AI content generator from various platforms.
+## Architecture Overview
 
-## Why Docker?
+### REST API Integration
+The project implements a REST API to:
+- Expose model functionality in a scalable manner
+- Enable cross-platform accessibility
+- Handle requests efficiently
+- Manage authentication and rate limiting
 
-Docker is used to containerize the application, making it portable and easy to deploy. By using Docker, you can run the application on any system that supports Docker, without worrying about compatibility issues. The containerization ensures that all dependencies are included and managed, providing a consistent development and production environment.
+### Docker Implementation
+Docker containerization provides:
+- Consistent development and production environments
+- Easy deployment across different systems
+- Simplified dependency management
+- Isolated runtime environment
 
-## Project Setup
+##  Project Setup
 
-To get the application running, follow these steps:
-
+### Prerequisites
+- Python 3.8+
+- Docker (optional)
+- Git
+- Streamlit
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/baranidharan27/GenAI
-```
-```sh
 cd GenAI
 ```
-2. **Install Dependencies**
-You can install the required dependencies by running the following command in your project directory:
-```sh
+
+### 2. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
-This will install all the necessary libraries for the project, including Streamlit, Transformers, and others.
 
-3. **Accessing the Documentation**
-You can find the documentation for this project in the docs directory. The documentation is built using MkDocs and can be accessed through the following steps:
-To build and view the documentation locally, run:
+### 3. Environment Setup
+Create a `.env` file in the root directory:
+```env
+MODEL_PATH=./models
+API_KEY=your_api_key
+PORT=8501
+```
 
+##  Development Guide
+
+### Running the Application
+
+#### Local Development
 ```bash
-mkdocs serve
-```
-This will start a local server, and you can access the documentation in your browser at http://127.0.0.1:8000.
-
-4. **Running with Streamlit**
-
-To run the application locally with Streamlit, execute the following command:
-```sh
+# Start the Streamlit application
 streamlit run app/main.py
-```
-This will start the application and open a browser window where you can interact with the AI content generator.
-or 
-```sh
+
+# Host on all network interfaces
 streamlit run app/main.py --server.address 0.0.0.0
 ```
-5. **Running with Docker**
-If you prefer to run the application using Docker, follow these steps:
 
-### Build the Docker image:
-```sh
-docker build -t .
-Run the Docker container:
-```
+#### Using Docker
 ```bash
-docker run -p 8501:8501 GenAI
+# Build the Docker image
+docker build -t genai .
+
+# Run the container
+docker run -p 8501:8501 genai
+
+# Access at http://localhost:8501
 ```
-This will start the application inside the Docker container and map it to port 8501 on your machine.
 
-5. **Accessing the Documentation**
-You can find the documentation for this project in the docs directory. The documentation is built using MkDocs and can be accessed through the following steps:
-To build and view the documentation locally, run:
+### Documentation Server
+```bash
+# Start the documentation server
+mkdocs serve
 
+# Access at http://127.0.0.1:8000
+```
 
+## 🎯 Prompt Engineering
 
+### Optimization Process
 
-Working pictures :
-![UI of chatbot](<image/Screenshot (32).png>)
-2.**Response**
-![UI of chatbot](<image/Screenshot (33).png>)
+1. **Initial Assessment**
+   - Baseline prompt testing
+   - Performance metrics collection
+   - Identification of improvement areas
 
-# Prompt engineering
+2. **Iterative Refinement**
+   - Context enhancement
+   - Token optimization
+   - Task-specific customization
 
-1.  ![First prompting](<image/prompt_result.png>)
+3. **Results**
+   - Improved response coherence
+   - Better domain adaptation
+   - Reduced token wastage
 
-2. ![Secondprompting](<image/prompt_2.png>)
+### Key Improvements
 
+```plaintext
+Before: Generic, unfocused outputs
+```
+![UI of chatbot](<image\First_attempt.png>)
+#### Response Quality
+```plaintext
+After:  Contextual, precise responses
+```
+![UI of chatbot](<image\image.png>)
+![UI of chatbot](<image\After_prompting.png>)
 
-# Conclusion
-This project is a work-in-progress, and while the current functionality is working well, there are many additional features and improvements planned for the future. I look forward to expanding this project with more capabilities once I have the resources and time to do so.
+#### Token Efficiency
+- Optimized prompt structure
+- Reduced redundancy
+- Reduced hallucination
+- Improved response accuracy
+
+##  Documentation
+
+### API Documentation
+Access the API documentation at `/docs` endpoint when running locally.
+
+### Component Structure
+```
+GenAI/
+├── app/
+│   ├── main.py
+│   ├── api/
+│   └── utils/
+├── models/
+├── docs/
+└── docker/
+```
+
+## Future Roadmap
+
+### Planned Features
+1. Domain-specific fine-tuning
+2. Extended model support
+3. Advanced analytics dashboard
+4. Performance optimization
+
+### Upcoming Improvements
+- Enhanced error handling
+- Additional API endpoints
+- Improved documentation
+- Extended test coverage
+
+##  Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+For more information, please refer to the [official documentation](https://github.com/baranidharan27/GenAI).

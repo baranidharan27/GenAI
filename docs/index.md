@@ -6,7 +6,7 @@ At present, due to limited computational resources and time constraints, I am un
 
 **However, I am pleased to share that I have successfully completed the tasks assigned to me, and the core functionality is working as intended.**
 
-In addition to that, I’d like to introduce another project that I’ve been working on as part of my hobby work—RAG-2. While it is still in the early stages of development, you can find it here on [GitHub]<https://github.com/baranidharan27/RAG-2/tree/main>. I have big ideas and a vision to expand this project further, but due to the limitations mentioned earlier—mainly my current computational power and the lack of time to dedicate more fully to it—I haven’t been able to complete everything as planned.
+In addition to that, I’d like to introduce another project that I’ve been working on as part of my hobby work—RAG-2. While it is still in the early stages of development, you can find it here on [GitHub](<https://github.com/baranidharan27/RAG-2/tree/main>). I have big ideas and a vision to expand this project further, but due to the limitations mentioned earlier—mainly my current computational power and the lack of time to dedicate more fully to it—I haven’t been able to complete everything as planned.
 
 Nonetheless, the existing functionality in the project works well, and I hope to build upon it in the future when I have access to better resources and more time. I’m happy to share this project with you
 

@@ -85,7 +85,7 @@ mkdocs serve
 # Access at http://127.0.0.1:8000
 ```
 
-## 🎯 Prompt Engineering
+##  Prompt Engineering
 
 ### Optimization Process
 
@@ -109,13 +109,13 @@ mkdocs serve
 ```plaintext
 Before: Generic, unfocused outputs
 ```
-![UI of chatbot](<image\First_attempt.png>)
+![UI of chatbot](<image/First_attempt.png>)
 #### Response Quality
 ```plaintext
 After:  Contextual, precise responses
 ```
-![UI of chatbot](<image\image.png>)
-![UI of chatbot](<image\After_prompting.png>)
+![UI of chatbot](<image/image.png>)
+![UI of chatbot](<image/After_prompting.png>)
 
 #### Token Efficiency
 - Optimized prompt structure

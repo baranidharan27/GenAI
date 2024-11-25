@@ -62,10 +62,19 @@ mkdocs serve
 ```
 This will start a local server, and you can access the documentation in your browser at http://127.0.0.1:8000.
 
-Conclusion
-This project is a work-in-progress, and while the current functionality is working well, there are many additional features and improvements planned for the future. I look forward to expanding this project with more capabilities once I have the resources and time to do so.
+
 
 Working pictures :
 ![UI of chatbot](<image/Screenshot (32).png>)
 2.**Response**
 ![UI of chatbot](<image/Screenshot (33).png>)
+
+# Prompt engineering
+
+1.  ![First prompting](<image/prompt_result.png>)
+
+2. ![Secondprompting](<image/prompt_2.png>)
+
+
+# Conclusion
+This project is a work-in-progress, and while the current functionality is working well, there are many additional features and improvements planned for the future. I look forward to expanding this project with more capabilities once I have the resources and time to do so.

@@ -1,6 +1,6 @@
 # Content Generator
 
-A LLM -driven content generator built using GPT-2. This project uses Streamlit for the user interface and integrates a REST API for backend functionality. Additionally, Docker is used for containerization to ensure the application can run seamlessly across different environments.
+A LLM -driven content generator built using GPT-2(Transformer lib). This project uses Streamlit for the user interface and integrates a REST API for backend functionality. Additionally, Docker is used for containerization to ensure the application can run seamlessly across different environments.
 
 ## Why REST API?
 
@@ -17,10 +17,10 @@ To get the application running, follow these steps:
 ### 1. Clone the Repository
 
 ```bash
-git clone 
+git clone https://github.com/baranidharan27/GenAI
 ```
 ```sh
-cd RAG-2
+cd GenAI
 ```
 2. **Install Dependencies**
 You can install the required dependencies by running the following command in your project directory:
@@ -29,7 +29,16 @@ pip install -r requirements.txt
 ```
 This will install all the necessary libraries for the project, including Streamlit, Transformers, and others.
 
-3. **Running with Streamlit**
+3. **Accessing the Documentation**
+You can find the documentation for this project in the docs directory. The documentation is built using MkDocs and can be accessed through the following steps:
+To build and view the documentation locally, run:
+
+```bash
+mkdocs serve
+```
+This will start a local server, and you can access the documentation in your browser at http://127.0.0.1:8000.
+
+4. **Running with Streamlit**
 
 To run the application locally with Streamlit, execute the following command:
 ```sh
@@ -40,7 +49,7 @@ or
 ```sh
 streamlit run app/main.py --server.address 0.0.0.0
 ```
-4. **Running with Docker**
+5. **Running with Docker**
 If you prefer to run the application using Docker, follow these steps:
 
 ### Build the Docker image:
@@ -49,7 +58,7 @@ docker build -t .
 Run the Docker container:
 ```
 ```bash
-docker run -p 8501:8501 rag-2
+docker run -p 8501:8501 GenAI
 ```
 This will start the application inside the Docker container and map it to port 8501 on your machine.
 
@@ -57,10 +66,6 @@ This will start the application inside the Docker container and map it to port 8
 You can find the documentation for this project in the docs directory. The documentation is built using MkDocs and can be accessed through the following steps:
 To build and view the documentation locally, run:
 
-```bash
-mkdocs serve
-```
-This will start a local server, and you can access the documentation in your browser at http://127.0.0.1:8000.
 
 
 

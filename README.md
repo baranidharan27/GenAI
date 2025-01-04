@@ -65,7 +65,6 @@ streamlit run app/main.py
 # Host on all network interfaces
 streamlit run app/main.py --server.address 0.0.0.0
 ```
-
 #### Using Docker
 ```bash
 # Build the Docker image

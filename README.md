@@ -1,3 +1,6 @@
+
+
+# This frontend branch is for frontend developement using react js tailwind 
 # GenAI Content Generator
 
 A LLM-driven content generator leveraging GPT-2 (Transformer library) with a Streamlit user interface and REST API backend. The project uses Docker for containerization, ensuring consistent deployment across environments.

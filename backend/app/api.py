@@ -26,6 +26,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from backend.src.models.llm_model import LLMModel
 from backend.src.config.settings import ModelConfig
+from backend.src.utils.prompt_templates import PromptTemplates
 
 router = APIRouter()
 

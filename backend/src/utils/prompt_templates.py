@@ -73,28 +73,27 @@ class PromptTemplates:
 
 
     def create_prompt(question: str) -> str:
-            return f""" You are a multi domain expert. A user has given a question (within the question tag)
-            Things to Do:
-            1, Reformulate the question with proper grammar and punctuation and correct any spelling mistakes.
-            2, Understand the other factors like user's intent, user's background, user's knowledge level etc. and add those factors while thinking about the answer.
-            
-            Your Role:
-            1, Understand and extract the which domain the question is about and you assume that you are an expert in that domain and the common domain that encompases the question.
-            (For Eg: If the question is about "What is a Transformer?" you can assume that the question is about "LLM" domain and you are an expert in "Machine Learning" domain)
+            return f""" You are a multi-domain expert. A user has given you the following question:
 
-            Answering Instructions:
-            1, Provide a clear .and precise response to the question. 
-            2, Do not hallucinate
-            3, do not provide false information.
+        Things to Do:
+        1. Reformulate the question with proper grammar and punctuation, and correct any spelling mistakes.
+        2. Understand the user's intent, background, and knowledge level. Consider those factors while formulating your answer.
 
-            Instructions before coming up with an answer:
-            1, Think step by step, ask intermediate questions to yourself and then answer the question. Use Chain of Thought Prompting
-            2, Provide mathematical or coding based responses if needed. 
-            3, Provide references if needed.
-            
-    Question: {question}
+        Your Role:
+        1. Identify the domain of the question. Assume you are an expert in the relevant domain. 
+        2. For example, if the question is about "What is a Transformer?" assume it is about the domain of "Machine Learning".
 
-    Answer: """
+        Answering Instructions:
+        1. Provide a clear, concise, and well-organized response.
+        2. Avoid hallucinations or false information.
+        3. Think step by step before answering, and if applicable, use Chain of Thought reasoning.
+        4. If needed, include mathematical or coding-based responses.
+        5. Provide references if applicable.
+
+        The Question:
+        {question}
+
+        The Answer:"""
 
     @staticmethod
     def extract_response(generated_text: str) -> str:

@@ -1,175 +1,158 @@
+# AI Chatbot with FastAPI Backend and React Frontend
 
+A modern chatbot application featuring a sleek user interface built with React and a robust FastAPI backend. The chatbot supports code syntax highlighting, copy-paste functionality, and real-time message updates.
 
-# This frontend branch is for frontend developement using react js tailwind 
-# GenAI Content Generator
+![Chatbot picture](working_screenshot.png)
+## Features
 
-A LLM-driven content generator leveraging GPT-2 (Transformer library) with a Streamlit user interface and REST API backend. The project uses Docker for containerization, ensuring consistent deployment across environments.
+- Modern, responsive UI design
+- Code syntax highlighting with copy functionality
+- Real-time message updates
+- Smooth animations and transitions
+- Mobile-friendly interface
+- Python code execution support
 
-## Table of Contents
-- [Architecture Overview](#architecture-overview)
-- [Key Features](#key-features)
-- [Project Setup](#project-setup)
-- [Development Guide](#development-guide)
-- [Prompt Engineering](#prompt-engineering)
-- [Documentation](#documentation)
-- [Future Roadmap](#future-roadmap)
+## Project Structure
 
-## Architecture Overview
-
-### REST API Integration
-The project implements a REST API to:
-- Expose model functionality in a scalable manner
-- Enable cross-platform accessibility
-- Handle requests efficiently
-- Manage authentication and rate limiting
-
-### Docker Implementation
-Docker containerization provides:
-- Consistent development and production environments
-- Easy deployment across different systems
-- Simplified dependency management
-- Isolated runtime environment
-
-##  Project Setup
-
-### Prerequisites
-- Python 3.8+
-- Docker (optional)
-- Git
-- Streamlit
-### 1. Clone the Repository
-```bash
-git clone https://github.com/baranidharan27/GenAI
-cd GenAI
+```
+project-root/
+├── frontend/                # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── Chat.js     # Main chat component
+│   │   ├── styles/
+│   │   │   └── index.css   # Styling
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── package.json
+│   └── README.md
+│
+└── backend/                 # FastAPI backend
+    ├── app/
+    │   ├── main.py
+    │   └── api/
+    └── requirements.txt
 ```
 
-### 2. Install Dependencies
+## Setup and Installation
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
+
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Environment Setup
-Create a `.env` file in the root directory:
-```env
-MODEL_PATH=./models
-API_KEY=your_api_key
-PORT=8501
-```
-
-##  Development Guide
-
-### Running the Application
-
-#### Local Development
+4. Run the FastAPI server:
 ```bash
-# Start the Streamlit application
-streamlit run app/main.py
-
-# Host on all network interfaces
-streamlit run app/main.py --server.address 0.0.0.0
+uvicorn app.main:app --reload
 ```
 
+The backend will be running at `http://127.0.0.1:8000`
 
-#### Using Docker
+### Frontend Setup
+
+1. Navigate to the frontend directory:
 ```bash
-# Build the Docker image
-docker build -t genai .
-
-# Run the container
-docker run -p 8501:8501 genai
-
-# Access at http://localhost:8501
+cd frontend/chatbot-ui
 ```
 
-### Documentation Server
+2. Install dependencies:
 ```bash
-# Start the documentation server
-mkdocs serve
-
-# Access at http://127.0.0.1:8000
+npm install
 ```
 
-##  Prompt Engineering
-
-### Optimization Process
-
-1. **Initial Assessment**
-   - Baseline prompt testing
-   - Performance metrics collection
-   - Identification of improvement areas
-
-2. **Iterative Refinement**
-   - Context enhancement
-   - Token optimization
-   - Task-specific customization
-
-3. **Results**
-   - Improved response coherence
-   - Better domain adaptation
-   - Reduced token wastage
-
-### Key Improvements
-
-```plaintext
-Before: Generic, unfocused outputs
-```
-![UI of chatbot](<image/First_attempt.png>)
-#### Response Quality
-```plaintext
-After:  Contextual, precise responses
-```
-![UI of chatbot](<image/image.png>)
-![UI of chatbot](<image/After_prompting.png>)
-
-#### Token Efficiency
-- Optimized prompt structure
-- Reduced redundancy
-- Reduced hallucination
-- Improved response accuracy
-
-##  Documentation
-
-### API Documentation
-Access the API documentation at `/docs` endpoint when running locally.
-
-### Component Structure
-```
-GenAI/
-├── app/
-│   ├── main.py
-│   ├── api/
-│   └── utils/
-├── models/
-├── docs/
-└── docker/
+3. Start the development server:
+```bash
+npm start
 ```
 
-## Future Roadmap
+The frontend will be running at `http://localhost:3000`
 
-### Planned Features
-1. Domain-specific fine-tuning
-2. Extended model support
-3. Advanced analytics dashboard
-4. Performance optimization
+## Usage
 
-### Upcoming Improvements
-- Enhanced error handling
-- Additional API endpoints
-- Improved documentation
-- Extended test coverage
+1. Open your browser and navigate to `http://localhost:3000`
+2. Start chatting with the AI assistant
+3. For code-related queries, the response will include syntax-highlighted code blocks
+4. Use the copy button to easily copy code snippets
+5. Messages are automatically scrolled into view
 
-##  Contributing
+## Code Block Features
+
+The chatbot includes enhanced code block functionality:
+- Syntax highlighting for Python code
+- Copy to clipboard button
+- Language indicator
+- Dark theme for better readability
+- Proper monospace font formatting
+
+## Example Interactions
+
+1. Simple code requests:
+```
+User: Give me python code to add two numbers
+Bot: Here's a simple Python function to add two numbers:
+
+def add_numbers(a, b):
+    return a + b
+
+# Example usage
+result = add_numbers(5, 3)
+print(result)  # Output: 8
+```
+
+2. Complex queries:
+```
+User: Explain what is physics informed neural networks
+Bot: [Detailed explanation with formatted text]
+```
+
+## Development
+
+### Frontend Development
+
+The React frontend uses several key components:
+
+- `Chat.js`: Main chat interface component
+- `index.css`: Styling including code block formatting
+- Lucide React icons for UI elements
+
+To modify the UI:
+1. Update `src/components/Chat.js` for component changes
+2. Modify `src/styles/index.css` for styling updates
+
+### Backend Development
+
+The FastAPI backend handles:
+- Chat request processing
+- Response generation
+- API endpoint management
+
+## Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
----
+## Acknowledgments
 
-For more information, please refer to the [official documentation](https://github.com/baranidharan27/GenAI).
+- FastAPI for the backend framework
+- React for the frontend library
+- Lucide React for icons

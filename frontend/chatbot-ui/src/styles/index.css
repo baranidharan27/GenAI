@@ -214,3 +214,86 @@ body {
     padding: 0;
   }
 }
+
+/* Keep all your existing styles and add these new styles for code blocks */
+
+/* Terminal-style code blocks */
+.terminal-container {
+  background: #1e1e1e;
+  border-radius: 8px;
+  margin: 8px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2d2d2d;
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+}
+
+.terminal-title span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.copy-button {
+  background: transparent;
+  border: 1px solid #555;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: #777;
+}
+
+.copied-icon {
+  color: #4CAF50;
+}
+
+.terminal-code {
+  margin: 0;
+  padding: 12px 16px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Code comments and markers */
+.code-comment {
+  color: #6A9955;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  padding: 4px 0;
+}
+
+/* Syntax highlighting in code blocks */
+.terminal-code .keyword { color: #569CD6; }
+.terminal-code .string { color: #CE9178; }
+.terminal-code .number { color: #B5CEA8; }
+.terminal-code .function { color: #DCDCAA; }
+.terminal-code .comment { color: #6A9955; }

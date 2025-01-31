@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, Copy, Check } from 'lucide-react';
+import { Send, Bot, Copy, Check, Terminal } from 'lucide-react';
 
 const Chat = () => {
   const [userInput, setUserInput] = useState("");
@@ -24,84 +24,88 @@ const Chat = () => {
     }, 2000);
   };
 
-  const detectLanguage = (code) => {
-    if (code.includes('python') || code.includes('def ') || code.includes('import ')) {
-      return 'python';
-    } else if (code.includes('npm') || code.includes('bash') || code.includes('$')) {
-      return 'bash';
-    }
-    return 'plaintext';
-  };
-
   const formatMessage = (text, messageIndex) => {
-    if (text.includes('```') || text.includes('python') || text.includes('def ') || text.includes('npm')) {
+    if (text.includes('``') || text.includes('def ') || text.includes('class ') || text.includes(' ')) {
       const lines = text.split('\n');
-      let inCodeBlock = false;
+      let formattedContent = [];
+      let isInCodeBlock = false;
+      let currentCode = [];
       let codeBlockCount = 0;
-      let currentCode = '';
-      const formattedLines = [];
 
       lines.forEach((line, idx) => {
-        if (line.includes('```')) {
-          if (inCodeBlock) {
-            // End of code block
+        if (line.includes('```') || (!isInCodeBlock && (line.trim().startsWith('def ') || line.trim().startsWith('class ')| line.trim().startsWith('#')| line.trim().startsWith('a')))) { 
+          if (isInCodeBlock) {
+            // End code block
             const codeId = `${messageIndex}-${codeBlockCount}`;
-            formattedLines.push(
-              <div key={`code-${idx}`} className="code-block-container">
-                <div className="code-block-header">
-                  <span className="code-language">{detectLanguage(currentCode)}</span>
+            formattedContent.push(
+              <div key={`code-${idx}`} className="terminal-container">
+                <div className="terminal-header">
+                  <div className="terminal-title">
+                    <Terminal size={14} />
+                    <span>Python</span>
+                  </div>
                   <button 
                     className="copy-button"
-                    onClick={() => handleCopy(currentCode, codeId)}
+                    onClick={() => handleCopy(currentCode.join('\n'), codeId)}
                   >
                     {copiedStates[codeId] ? (
-                      <Check size={16} className="copied-icon" />
+                      <Check size={14} className="copied-icon" />
                     ) : (
-                      <Copy size={16} />
+                      <Copy size={14} />
                     )}
                   </button>
                 </div>
-                <pre className="code-block">
-                  <code>{currentCode.trim()}</code>
+                <pre className="terminal-code">
+                  <code>{currentCode.join('\n')}</code>
                 </pre>
               </div>
             );
-            currentCode = '';
+            currentCode = [];
             codeBlockCount++;
+            isInCodeBlock = false;
+          } else {
+            isInCodeBlock = true;
           }
-          inCodeBlock = !inCodeBlock;
-        } else if (inCodeBlock) {
-          currentCode += line + '\n';
-        } else if (line.trim().startsWith('python') || line.includes('def ') || line.includes('npm')) {
-          // Inline code block
-          const codeId = `${messageIndex}-${codeBlockCount}`;
-          formattedLines.push(
-            <div key={`code-${idx}`} className="code-block-container">
-              <div className="code-block-header">
-                <span className="code-language">{detectLanguage(line)}</span>
-                <button 
-                  className="copy-button"
-                  onClick={() => handleCopy(line, codeId)}
-                >
-                  {copiedStates[codeId] ? (
-                    <Check size={16} className="copied-icon" />
-                  ) : (
-                    <Copy size={16} />
-                  )}
-                </button>
-              </div>
-              <pre className="code-block">
-                <code>{line}</code>
-              </pre>
-            </div>
+        } else if (isInCodeBlock) {
+          currentCode.push(line);
+        } else if (line.trim().startsWith('# ') || line.trim().startsWith('## ')) {
+          formattedContent.push(
+            <div key={`comment-${idx}`} className="code-comment">{line}</div>
           );
-          codeBlockCount++;
-        } else {
-          formattedLines.push(<p key={idx}>{line}</p>);
+        } else if (line.trim()) {
+          formattedContent.push(<p key={`text-${idx}`}>{line}</p>);
         }
       });
 
-      return formattedLines;
+      // Handle any remaining code block
+      if (currentCode.length > 0) {
+        const codeId = `${messageIndex}-${codeBlockCount}`;
+        formattedContent.push(
+          <div key="final-code" className="terminal-container">
+            <div className="terminal-header">
+              <div className="terminal-title">
+                <Terminal size={14} />
+                <span>Python</span>
+              </div>
+              <button 
+                className="copy-button"
+                onClick={() => handleCopy(currentCode.join('\n'), codeId)}
+              >
+                {copiedStates[codeId] ? (
+                  <Check size={14} className="copied-icon" />
+                ) : (
+                  <Copy size={14} />
+                )}
+              </button>
+            </div>
+            <pre className="terminal-code">
+              <code>{currentCode.join('\n')}</code>
+            </pre>
+          </div>
+        );
+      }
+
+      return formattedContent;
     }
     return text;
   };
@@ -127,7 +131,10 @@ const Chat = () => {
         }
         
         const data = await response.json();
-        setMessages(prev => [...prev, { user: false, text: data.response }]);
+        setMessages(prev => [...prev, { 
+          user: false, 
+          text: data.response 
+        }]);
       } catch (error) {
         console.error("Error sending message:", error);
         setMessages(prev => [...prev, { 
@@ -150,7 +157,7 @@ const Chat = () => {
     <div className="chat-container">
       <div className="chat-header">
         <Bot size={24} className="bot-icon" />
-        <h1>Testing for UI</h1>
+        <h1>Test for ui .</h1>
       </div>
 
       <div className="chat-messages">

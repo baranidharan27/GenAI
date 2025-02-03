@@ -1,4 +1,4 @@
-# AI Chatbot with FastAPI Backend and React Frontend
+# A LLM project with FastAPI Backend and React Frontend
 
 A modern chatbot application featuring a sleek user interface built with React and a robust FastAPI backend. The chatbot supports code syntax highlighting, copy-paste functionality, and real-time message updates.
 

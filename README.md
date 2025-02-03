@@ -97,6 +97,7 @@ The chatbot includes enhanced code block functionality:
 - Dark theme for better readability
 - Proper monospace font formatting
 
+
 ## Example Interactions
 
 1. Simple code requests:
